@@ -43,7 +43,7 @@ def shasearch():
     elif request.method == 'POST':
         sha = request.form['myshasearch']
         cur = conn2.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        s = "SELECT * FROM malwaredatatable where sha256_hash='{}'".format(sha)
+        s = "SELECT * FROM mdatas where sha256_hash='{}'".format(sha)
         cur.execute(s)
         shadata = cur.fetchall()
         return render_template('shasearch.html', shadata = shadata)
@@ -51,7 +51,7 @@ def shasearch():
 @app.route('/ipdatas')
 def ipdatas():
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    s = "SELECT * FROM abuse_uniq limit 100"
+    s = "SELECT * FROM abuse_uniq order by lastreportedat desc limit 100"
     cur.execute(s)
     list_datas = cur.fetchall()
     return render_template('ipdatas.html', list_datas = list_datas)
@@ -59,7 +59,7 @@ def ipdatas():
 @app.route('/sha256datas')
 def sha256datas():
     cur = conn2.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    s = "SELECT * FROM malwaredatatable limit 100"
+    s = "SELECT * FROM mdatas order by first_seen_utc desc limit 100"
     cur.execute(s)
     malware_datas = cur.fetchall()
     return render_template('sha256datas.html', malware_datas = malware_datas)
