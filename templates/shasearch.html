@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %} ThreatMonIt | Sha256 Serach {% endblock title %}
+
+{% block body %}
+
+<body>
+    
+
+    <form action="{{url_for('shasearch')}}" method="post" class="form-inline" >
+        <div class="form-group m-2 ">
+            <input type="search" class="form-control" name="myshasearch" id="myshasearch">
+            
+        </div>
+        <button type="submit" class="btn btn-primary m-2">Search</button>
+        
+    </form>
+    
+        <table id="myMalware" class="table table-striped table-bordered table-dark ">
+            <thead>
+                <tr>
+                    
+                    <td>first_seen_utc</td>
+                    <td>sha256_hash</td>
+                    <td>md5_hash</td>
+                    <td>sha1_hash</td>
+                    <td>reporter</td>
+                    <td>file_name</td>
+                    <td>file_type_guess</td>
+                    <td>mime_type</td>
+                    <td>signature</td>
+                    <td>clamav</td>
+                    <td>vtpercent</td>
+                    <td>imphash</td>
+                    <td>ssdeep</td>
+                    <td>tlsh</td>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in shadata %}
+                <tr>
+                    
+                    
+                    <td>{{ row[1]}}</td>
+                    <td>{{ row[2]}}</td>
+                    <td>{{ row[3]}}</td>
+                    <td>{{ row[4]}}</td>
+                    <td>{{ row[5]}}</td>
+                    <td>{{ row[6]}}</td>
+                    <td>{{ row[7]}}</td>
+                    <td>{{ row[8]}}</td>
+                    <td>{{ row[9]}}</td>
+                    <td>{{ row[10]}}</td>
+                    <td>{{ row[11]}}</td>
+                    <td>{{ row[12]}}</td>
+                    <td>{{ row[13]}}</td>
+                    <td>{{ row[14]}}</td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+{% endblock %}

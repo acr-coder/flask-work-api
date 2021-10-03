@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+      
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">ThreatMonIt</a>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/ipdatas">Data for IP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sha256datas">Data for sha256_hash</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ipsearch">Search IP</a>
+          </li>
+          
+        </ul>
+        
+    </nav>
+    <div class="container pt-4">
+        {% block body %}
+        {% endblock %}
+    </div>
+    
+
+
+    
+  </body>
+</html>
